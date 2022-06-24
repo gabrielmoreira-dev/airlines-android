@@ -36,6 +36,7 @@ abstract class BaseAdapter<T, B : ViewBinding>(
 
     fun setupItems(items: List<T>) {
         this.items = items
+        notifyDataSetChanged()
     }
 
     inner class ViewHolder(binding: B) : RecyclerView.ViewHolder(binding.root) {

@@ -1,4 +1,4 @@
-package com.example.airlines.presentation.airlines.list
+package com.example.airlines.presentation.airlines.list.adapters
 
 import android.content.Context
 import com.bumptech.glide.Glide
