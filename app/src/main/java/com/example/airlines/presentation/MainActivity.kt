@@ -8,7 +8,9 @@ import com.example.airlines.databinding.ActivityMainBinding
 import com.example.airlines.presentation.airlines.list.AirlineListFragment
 import com.example.airlines.presentation.common.BaseActivity
 import com.example.airlines.presentation.passengers.list.PassengerListFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>(
     ActivityMainBinding::inflate
 ) {

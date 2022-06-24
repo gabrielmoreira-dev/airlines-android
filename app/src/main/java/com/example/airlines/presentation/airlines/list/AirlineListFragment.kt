@@ -2,29 +2,23 @@ package com.example.airlines.presentation.airlines.list
 
 import android.os.Bundle
 import android.view.View
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.airlines.data.remote.data_source.AirlineRDS
-import com.example.airlines.data.repository.AirlineRepository
 import com.example.airlines.databinding.FragmentAirlineListBinding
 import com.example.airlines.presentation.airlines.list.adapters.AirlineAdapter
 import com.example.airlines.presentation.common.BaseFragment
 import com.example.airlines.presentation.common.State
-import com.example.domain.use_case.GetAirlineListUC
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AirlineListFragment : BaseFragment<FragmentAirlineListBinding>(
     FragmentAirlineListBinding::inflate
 ) {
-    private lateinit var viewModel: AirlineListViewModel
+    private val viewModel by viewModels<AirlineListViewModel>()
     private lateinit var airlineAdapter: AirlineAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val useCase = GetAirlineListUC(AirlineRepository(AirlineRDS.getInstance()))
-        viewModel = ViewModelProvider(
-            this,
-            AirlineListViewModelFactory(useCase)
-        ).get(AirlineListViewModel::class.java)
         setupRecyclerView()
     }
 
