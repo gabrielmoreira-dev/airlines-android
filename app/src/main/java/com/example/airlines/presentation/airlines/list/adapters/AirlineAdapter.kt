@@ -5,11 +5,11 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.airlines.R
 import com.example.airlines.databinding.ResAirlineItemBinding
-import com.example.airlines.presentation.airlines.list.models.Airline
+import com.example.airlines.presentation.airlines.list.models.AirlinePM
 import com.example.airlines.presentation.common.BaseAdapter
 
-class AirlineAdapter(onItemClicked: ((Airline) -> Unit)? = null)
-    : BaseAdapter<Airline, ResAirlineItemBinding>(
+class AirlineAdapter(onItemClicked: ((AirlinePM) -> Unit)? = null)
+    : BaseAdapter<AirlinePM, ResAirlineItemBinding>(
     ResAirlineItemBinding::inflate,
     onItemClicked
 ) {

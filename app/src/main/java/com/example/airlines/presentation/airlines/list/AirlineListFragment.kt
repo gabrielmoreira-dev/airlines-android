@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.airlines.data.remote.datasource.AirlineRDS
+import com.example.airlines.data.repository.AirlineRepository
 import com.example.airlines.databinding.FragmentAirlineListBinding
 import com.example.airlines.presentation.airlines.list.adapters.AirlineAdapter
 import com.example.airlines.presentation.common.BaseFragment
@@ -17,8 +19,12 @@ class AirlineListFragment : BaseFragment<FragmentAirlineListBinding>(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this, AirlineListViewModelFactory())
-            .get(AirlineListViewModel::class.java)
+        viewModel = ViewModelProvider(
+            this,
+            AirlineListViewModelFactory(
+                AirlineRepository(AirlineRDS.getInstance())
+            )
+        ).get(AirlineListViewModel::class.java)
         setupRecyclerView()
     }
 
