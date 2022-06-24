@@ -1,4 +1,4 @@
-package com.example.airlines
+package com.example.airlines.presentation
 
 import android.os.Bundle
 import android.view.MenuItem

@@ -1,4 +1,4 @@
-package com.example.airlines.data.remote.datasource
+package com.example.airlines.data.remote.data_source
 
 import com.example.airlines.data.remote.model.AirlineRM
 import retrofit2.Call
@@ -8,7 +8,7 @@ import retrofit2.http.GET
 
 interface AirlineRDS {
     @GET("/airlines")
-    fun getAirlineList(): Call<List<AirlineRM>>
+    suspend fun getAirlineList(): List<AirlineRM>
 
     companion object {
         private val remoteDataSource by lazy {
