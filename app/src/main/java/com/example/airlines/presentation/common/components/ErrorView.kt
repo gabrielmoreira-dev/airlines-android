@@ -4,20 +4,31 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.LinearLayout
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.airlines.R
-import com.example.airlines.databinding.ResLoadingViewBinding
+import com.example.airlines.databinding.ResErrorViewBinding
 
-class LoadingView(context: Context, attrs: AttributeSet) : LinearLayout(context, attrs) {
-    private val binding = ResLoadingViewBinding
+class ErrorView(context: Context, attrs: AttributeSet): ConstraintLayout(context, attrs) {
+    private val binding = ResErrorViewBinding
         .inflate(LayoutInflater.from(context), this, true)
 
     init {
         binding.root.setOnClickListener {}
         context.obtainStyledAttributes(attrs, R.styleable.StatefulView).apply {
+            getString(R.styleable.StatefulView_description)?.let {
+                setDescription(it)
+            }
             setVisibility(getBoolean(R.styleable.StatefulView_visible, false))
             recycle()
         }
+    }
+
+    fun setDescription(description: String) {
+        binding.descriptionView.text = description
+    }
+
+    fun setOnTryAgainListener(listener: View.OnClickListener) {
+        binding.tryAgainButton.setOnClickListener(listener)
     }
 
     fun show() {

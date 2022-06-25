@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.airlines.R
 import com.example.airlines.databinding.FragmentAirlineListBinding
 import com.example.airlines.presentation.airlines.list.adapters.AirlineAdapter
 import com.example.airlines.presentation.airlines.list.models.AirlinePM
@@ -39,6 +40,9 @@ class AirlineListFragment : BaseFragment<FragmentAirlineListBinding>(
                 }
             }
         }
+        binding.errorView.setOnTryAgainListener {
+            viewModel.getAirlineList()
+        }
     }
 
     override fun onResume() {
@@ -56,14 +60,27 @@ class AirlineListFragment : BaseFragment<FragmentAirlineListBinding>(
 
     private fun handleSuccessState(airlineList: List<AirlinePM>) {
         airlineAdapter.setupItems(airlineList)
-        binding.loadingView.dismiss()
+        binding.apply {
+            loadingView.dismiss()
+            errorView.dismiss()
+        }
     }
 
     private fun handleLoadingState() {
-        binding.loadingView.show()
+        binding.apply {
+            loadingView.show()
+            errorView.dismiss()
+        }
     }
 
     private fun handleErrorState(message: UIString) {
-        // TODO: Handle error state
+        val description = context?.let {
+            message.asString(it)
+        } ?: getString(R.string.generic_error_message)
+        binding.apply {
+            errorView.setDescription(description)
+            errorView.show()
+            loadingView.dismiss()
+        }
     }
 }
