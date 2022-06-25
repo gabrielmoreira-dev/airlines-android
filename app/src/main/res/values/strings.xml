@@ -2,4 +2,6 @@
     <string name="app_name">Airlines</string>
     <string name="airlines_navigation_item">Airlines</string>
     <string name="passengers_navigation_item">Passengers</string>
+
+    <string name="generic_error_message">An error occurred. Please try again.</string>
 </resources>

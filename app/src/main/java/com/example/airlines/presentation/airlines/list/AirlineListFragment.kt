@@ -6,8 +6,10 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.airlines.databinding.FragmentAirlineListBinding
 import com.example.airlines.presentation.airlines.list.adapters.AirlineAdapter
+import com.example.airlines.presentation.airlines.list.models.AirlinePM
 import com.example.airlines.presentation.common.BaseFragment
 import com.example.airlines.presentation.common.State
+import com.example.airlines.presentation.common.UIString
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -27,13 +29,13 @@ class AirlineListFragment : BaseFragment<FragmentAirlineListBinding>(
         viewModel.state.observe(this) {
             when (it) {
                 is State.Success -> {
-                    airlineAdapter.setupItems(it.model)
+                    handleSuccessState(it.model)
                 }
                 is State.Loading -> {
-                    // TODO: Handle loading state
+                    handleLoadingState()
                 }
                 is State.Error -> {
-                    // TODO: Handle error state
+                    handleErrorState(it.message)
                 }
             }
         }
@@ -50,5 +52,17 @@ class AirlineListFragment : BaseFragment<FragmentAirlineListBinding>(
             layoutManager = GridLayoutManager(context, 2)
             adapter = airlineAdapter
         }
+    }
+
+    private fun handleSuccessState(airlineList: List<AirlinePM>) {
+        airlineAdapter.setupItems(airlineList)
+    }
+
+    private fun handleLoadingState() {
+        // TODO: Handle loading state
+    }
+
+    private fun handleErrorState(message: UIString) {
+        // TODO: Handle error state
     }
 }
