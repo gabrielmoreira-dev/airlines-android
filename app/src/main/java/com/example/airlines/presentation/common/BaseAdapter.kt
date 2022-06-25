@@ -19,11 +19,7 @@ abstract class BaseAdapter<T, B : ViewBinding>(
     abstract fun bindItem(context: Context, binding: B, position: Int)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder(
-        bindingInflater(
-            LayoutInflater.from(parent.context),
-            parent,
-            false
-        )
+        bindingInflater(LayoutInflater.from(parent.context), parent, false)
     )
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {

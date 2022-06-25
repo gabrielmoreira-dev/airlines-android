@@ -1,7 +1,6 @@
 package com.example.domain.use_case
 
 import com.example.domain.AirlinesException
-import com.example.domain.UnexpectedException
 
 abstract class UseCase<P, R> {
     protected abstract suspend fun execute(params: P): R
@@ -10,7 +9,7 @@ abstract class UseCase<P, R> {
         execute(params)
     } catch (e: Exception) {
         if (e !is AirlinesException) {
-            throw UnexpectedException()
+            throw AirlinesException.UnexpectedException()
         }
         throw e
     }

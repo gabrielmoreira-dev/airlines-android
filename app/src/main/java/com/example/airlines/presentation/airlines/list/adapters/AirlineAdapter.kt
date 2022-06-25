@@ -8,16 +8,13 @@ import com.example.airlines.databinding.ResAirlineItemBinding
 import com.example.airlines.presentation.airlines.list.models.AirlinePM
 import com.example.airlines.presentation.common.BaseAdapter
 
-class AirlineAdapter(onItemClicked: ((AirlinePM) -> Unit)? = null)
-    : BaseAdapter<AirlinePM, ResAirlineItemBinding>(
+class AirlineAdapter(
+    onItemClicked: ((AirlinePM) -> Unit)? = null
+) : BaseAdapter<AirlinePM, ResAirlineItemBinding>(
     ResAirlineItemBinding::inflate,
     onItemClicked
 ) {
-    override fun bindItem(
-        context: Context,
-        binding: ResAirlineItemBinding,
-        position: Int
-    ) {
+    override fun bindItem(context: Context, binding: ResAirlineItemBinding, position: Int) {
         val airline = items[position]
         binding.title.text = airline.name
         val requestOptions = RequestOptions()

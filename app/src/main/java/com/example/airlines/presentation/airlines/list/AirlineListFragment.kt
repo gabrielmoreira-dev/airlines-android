@@ -56,10 +56,11 @@ class AirlineListFragment : BaseFragment<FragmentAirlineListBinding>(
 
     private fun handleSuccessState(airlineList: List<AirlinePM>) {
         airlineAdapter.setupItems(airlineList)
+        binding.loadingView.dismiss()
     }
 
     private fun handleLoadingState() {
-        // TODO: Handle loading state
+        binding.loadingView.show()
     }
 
     private fun handleErrorState(message: UIString) {

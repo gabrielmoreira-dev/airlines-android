@@ -5,10 +5,7 @@ import androidx.annotation.StringRes
 
 sealed class UIString {
     data class DynamicString(val value: String) : UIString()
-    class StringResource(
-        @StringRes val resId: Int,
-        vararg val args: Any
-    ): UIString()
+    class StringResource(@StringRes val resId: Int, vararg val args: Any): UIString()
 
     fun asString(context: Context): String {
         return when(this) {

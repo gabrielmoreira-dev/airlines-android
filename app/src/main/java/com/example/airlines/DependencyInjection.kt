@@ -26,9 +26,7 @@ object DependencyInjection {
 
     @Provides
     @Singleton
-    fun provideAirlineRepository(
-        airlineRDS: AirlineRDS
-    ): AirlineDataRepository {
+    fun provideAirlineRepository(airlineRDS: AirlineRDS): AirlineDataRepository {
         return AirlineRepository(airlineRDS)
     }
 

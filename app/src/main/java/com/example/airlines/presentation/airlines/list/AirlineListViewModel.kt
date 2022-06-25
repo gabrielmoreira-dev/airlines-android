@@ -22,9 +22,7 @@ class AirlineListViewModel @Inject constructor(
         state.postValue(State.Loading)
 
         val errorHandler = CoroutineExceptionHandler { _, _ ->
-            state.postValue(State.Error(
-                UIString.StringResource(R.string.generic_error_message)
-            ))
+            state.postValue(State.Error(UIString.StringResource(R.string.generic_error_message)))
         }
         CoroutineScope(Dispatchers.IO).launch(errorHandler) {
             val result = getAirlineListUC.invoke(Unit)
