@@ -3,6 +3,7 @@ package com.example.airlines
 import com.example.airlines.data.remote.data_source.AirlineRDS
 import com.example.airlines.data.remote.infrastructure.RetrofitClient
 import com.example.airlines.data.repository.AirlineRepository
+import com.example.airlines.presentation.common.AppDispatchers
 import com.example.domain.data_repository.AirlineDataRepository
 import com.example.domain.model.Airline
 import com.example.domain.use_case.GetAirlineListUC
@@ -37,4 +38,8 @@ object DependencyInjection {
     ): UseCase<Unit, List<Airline>> {
         return GetAirlineListUC(airlineRepository)
     }
+
+    @Provides
+    @Singleton
+    fun provideAppDispatchers() = AppDispatchers()
 }
