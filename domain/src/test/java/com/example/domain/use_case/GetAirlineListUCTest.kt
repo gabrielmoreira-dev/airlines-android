@@ -1,5 +1,6 @@
 package com.example.domain.use_case
 
+import com.appmattus.kotlinfixture.kotlinFixture
 import com.example.domain.AirlinesException
 import com.example.domain.data_repository.AirlineDataRepository
 import com.example.domain.model.Airline
@@ -16,11 +17,8 @@ class GetAirlineListUCTest {
     private lateinit var sut: GetAirlineListUC
     private val airlineRepository = mock<AirlineDataRepository>()
 
-    private val airlineList = arrayListOf(
-        Airline("Airline 1", "http://test.com/logo"),
-        Airline("Airline 2", "http://test.com/logo"),
-        Airline("Airline 3", "http://test.com/logo")
-    )
+    private val fixture = kotlinFixture()
+    private val airlineList = fixture<List<Airline>>()
 
     @Before
     fun setup() {

@@ -1,6 +1,7 @@
 package com.example.airlines.presentation.airlines.list
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import com.appmattus.kotlinfixture.kotlinFixture
 import com.example.airlines.MainCoroutineRule
 import com.example.airlines.presentation.airlines.list.models.AirlinePM
 import com.example.airlines.presentation.common.AppDispatchers
@@ -41,11 +42,8 @@ class AirlineListViewModelTest {
     private val getAirlineListUC = mock<GetAirlineListUC>()
     private val viewModelStateSpy = AirlineListViewModelStateSpy()
 
-    private val airlineList = arrayListOf(
-        Airline("Airline 1", "http://test.com/logo"),
-        Airline("Airline 2", "http://test.com/logo"),
-        Airline("Airline 3", "http://test.com/logo")
-    )
+    private val fixture = kotlinFixture()
+    private val airlineList = fixture<List<Airline>>()
 
     @get:Rule
     val instantTaskExecutorRule = InstantTaskExecutorRule()

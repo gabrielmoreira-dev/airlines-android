@@ -1,5 +1,6 @@
 package com.example.airlines.data.repository
 
+import com.appmattus.kotlinfixture.kotlinFixture
 import com.example.airlines.data.local.data_source.AirlineLDS
 import com.example.airlines.data.local.model.AirlineLM
 import com.example.airlines.data.mapper.toDM
@@ -22,17 +23,9 @@ class AirlineRepositoryTest {
     private val airlineRDS = mock<AirlineRDS>()
     private val airlineLDS = mock<AirlineLDS>()
 
-    private val airlineRMList = arrayListOf(
-        AirlineRM("Airline 1", "http://test.com/logo"),
-        AirlineRM("Airline 2", "http://test.com/logo"),
-        AirlineRM("Airline 3", "http://test.com/logo")
-    )
-
-    private val airlineLMList = arrayListOf(
-        AirlineLM("Airline 1", "http://test.com/logo"),
-        AirlineLM("Airline 2", "http://test.com/logo"),
-        AirlineLM("Airline 3", "http://test.com/logo")
-    )
+    private val fixture = kotlinFixture()
+    private val airlineRMList = fixture<List<AirlineRM>>()
+    private val airlineLMList = fixture<List<AirlineLM>>()
 
     @Before
     fun setup() {
