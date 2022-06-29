@@ -9,7 +9,7 @@ abstract class UseCase<P, R> {
         execute(params)
     } catch (e: Exception) {
         if (e !is AirlinesException) {
-            throw AirlinesException.UnexpectedException()
+            throw AirlinesException.UnexpectedException
         }
         throw e
     }

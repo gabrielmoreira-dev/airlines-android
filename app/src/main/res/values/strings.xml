@@ -6,6 +6,6 @@
     <string name="airlines_list_fragment_title">Airlines</string>
     <string name="passengers_list_fragment_title">Passengers</string>
 
-    <string name="generic_error_message">An error occurred. Please try again.</string>
+    <string name="generic_error_message">An error occurred, please try again.</string>
     <string name="error_try_again_button">Try again</string>
 </resources>
