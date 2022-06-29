@@ -4,6 +4,9 @@ import android.os.Bundle
 import android.view.MenuItem
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupWithNavController
 import com.example.airlines.databinding.ActivityMainBinding
 import com.example.airlines.presentation.airlines.list.AirlineListFragment
 import com.example.airlines.presentation.common.BaseActivity
@@ -16,44 +19,13 @@ class MainActivity : BaseActivity<ActivityMainBinding>(
 ) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        if (savedInstanceState == null) {
-            callAirlineListFragment()
-        }
-    }
 
-    override fun onStart() {
-        super.onStart()
-        binding.bottomNavigation.setOnItemSelectedListener {
-            onNavigationItemSelected(it)
-        }
-    }
+        val navHostFragment = supportFragmentManager
+            .findFragmentById(binding.fragmentContainerView.id) as NavHostFragment
+        val navController = navHostFragment.navController
+        binding.bottomNavigation.setupWithNavController(navController)
 
-    private fun onNavigationItemSelected(item: MenuItem): Boolean {
-        val menu = binding.bottomNavigation.menu
-        return when (item.itemId) {
-            menu.getItem(0).itemId -> {
-                callAirlineListFragment()
-                true
-            }
-            menu.getItem(1).itemId -> {
-                callPassengerListFragment()
-                true
-            }
-            else -> false
-        }
-    }
-
-    private fun callAirlineListFragment() {
-        supportFragmentManager.commit {
-            setReorderingAllowed(true)
-            add<AirlineListFragment>(binding.fragmentContainerView.id)
-        }
-    }
-
-    private fun callPassengerListFragment() {
-        supportFragmentManager.commit {
-            setReorderingAllowed(true)
-            add<PassengerListFragment>(binding.fragmentContainerView.id)
-        }
+        val appBarConfiguration = AppBarConfiguration(navController.graph)
+        binding.toolbar.setupWithNavController(navController, appBarConfiguration)
     }
 }

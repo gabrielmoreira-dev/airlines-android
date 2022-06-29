@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/airlines_navigation_item"
-        android:enabled="true"
+        android:id="@+id/airlineListFragment"
         android:icon="@drawable/ic_menu_airlines"
         android:title="@string/airlines_navigation_item" />
     <item
-        android:id="@+id/passengers_navigation_item"
-        android:enabled="true"
+        android:id="@+id/passengerListFragment"
         android:icon="@drawable/ic_menu_passengers"
         android:title="@string/passengers_navigation_item" />
 </menu>

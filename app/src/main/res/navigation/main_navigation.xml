@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/airlineListFragment">
+
+    <fragment
+        android:id="@+id/airlineListFragment"
+        android:name="com.example.airlines.presentation.airlines.list.AirlineListFragment"
+        android:label="@string/airlines_list_fragment_title"
+        tools:layout="@layout/fragment_airline_list" />
+    <fragment
+        android:id="@+id/passengerListFragment"
+        android:name="com.example.airlines.presentation.passengers.list.PassengerListFragment"
+        android:label="@string/passengers_list_fragment_title"
+        tools:layout="@layout/fragment_passenger_list" />
+</navigation>
