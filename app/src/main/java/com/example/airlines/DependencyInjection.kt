@@ -44,7 +44,7 @@ object DependencyInjection {
     @Singleton
     fun provideAirlineDatabase(
         @ApplicationContext context: Context
-    ) = Room.databaseBuilder(context, AirlinesDatabase::class.java, "airlines").build()
+    ) = Room.databaseBuilder(context, AirlinesDatabase::class.java, "airlines_db").build()
 
     @Provides
     @Singleton

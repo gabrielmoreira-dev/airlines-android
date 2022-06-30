@@ -23,9 +23,12 @@ class AirlineRepository(
 
     private suspend fun getRemoteAirlineList() = airlineRDS.getAirlineList()
 
-    private suspend fun insertLocalAirlineList(airlineList: List<AirlineLM>) = airlineLDS.apply {
-        clearAirlineList()
-        insertAirlineList(airlineList)
+    private suspend fun insertLocalAirlineList(airlineList: List<AirlineLM>) = try {
+        airlineLDS.apply {
+            clearAirlineList()
+            insertAirlineList(airlineList)
+        }
+    } catch (_: Exception) {
     }
 
     private suspend fun getLocalAirlineList() = airlineLDS.getAllAirlines().apply {

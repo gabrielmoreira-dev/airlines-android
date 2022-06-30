@@ -12,7 +12,7 @@ import com.example.domain.model.Passenger
 class PassengerRepository(
     private val passengerRDS: PassengerRDS,
     private val passengerLDS: PassengerLDS
-): PassengerDataRepository {
+) : PassengerDataRepository {
     override suspend fun getPassengerList(): List<Passenger> = try {
         getRemotePassengerList()
             .map { it.toLM() }.apply { insertLocalPassengerList(this) }
@@ -25,9 +25,12 @@ class PassengerRepository(
 
     private suspend fun insertLocalPassengerList(
         passengerList: List<PassengerLM>
-    ) = passengerLDS.apply {
-        clearPassengerList()
-        insertPassengerList(passengerList)
+    ) = try {
+        passengerLDS.apply {
+            clearPassengerList()
+            insertPassengerList(passengerList)
+        }
+    } catch (_: Exception) {
     }
 
     private suspend fun getLocalPassengerList() = passengerLDS.getAllPassengers().apply {
