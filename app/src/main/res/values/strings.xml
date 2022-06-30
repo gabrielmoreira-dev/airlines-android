@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Airlines</string>
+    <string name="airlines_navigation_item">Airlines</string>
+    <string name="passengers_navigation_item">Passengers</string>
+
+    <string name="airlines_list_fragment_title">Airlines</string>
+
+    <string name="passengers_list_fragment_title">Passengers</string>
+    <string name="passenger_age">Age: %1$d years</string>
+
+    <string name="generic_error_message">An error occurred, please try again.</string>
+    <string name="error_try_again_button">Try again</string>
 </resources>
